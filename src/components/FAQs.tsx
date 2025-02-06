@@ -1,3 +1,9 @@
+"use client";
+
+import { useState } from "react";
+import PlusIcon from "../assets/icons/plus.svg";
+import MinusIcon from "../assets/icons/minus.svg";
+
 const items = [
   {
     question: "What payment methods do you accept?",
@@ -22,5 +28,41 @@ const items = [
 ];
 
 export const FAQs = () => {
-  return null;
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className="bg-[linear-gradient(to_bottom,#5D2CA8_0%,#000_100%)] py-[72px] sm:py-24 text-white">
+      <div className="container ">
+        <h1 className="text-6xl font-bold text-center tracking-tighter">
+          Frequently asked questions
+        </h1>
+        {/* faqs */}
+        <div className="mt-12 max-w-2xl mx-auto">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="py-7 border-b border-b-white/30 cursor-pointer"
+              onClick={() => toggleFAQ(index)}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-semibold">{item.question}</span>
+                {openIndex === index ? <MinusIcon /> :<PlusIcon/>}
+              </div>
+              <div
+                className={`${
+                  openIndex === index ? "block" : "hidden"
+                } mt-2 text-sm text-white/70`}
+              >
+                {item.answer}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };

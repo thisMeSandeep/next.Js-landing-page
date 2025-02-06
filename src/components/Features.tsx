@@ -1,3 +1,6 @@
+import EcosystemIcon from "../assets/icons/ecosystem.svg";
+import Feature from "./Feature";
+
 const features = [
   {
     title: "Integration Ecosystem",
@@ -17,5 +20,29 @@ const features = [
 ];
 
 export const Features = () => {
-  return null;
+  return (
+    <div className="bg-black py-[72px] sm:py-24 text-white">
+      <div className="container ">
+        <h1 className="text-6xl font-bold text-center tracking-tighter">
+          Everything you need
+        </h1>
+        <p className="text-xl text-white/70 leading-7 text-center mt-5 max-w-xl mx-auto">
+          Enjoy customizable lists, team work tools, and smart tracking all in
+          one place. Set tasks, get reminders, and see your progress simply and
+          quickly.
+        </p>
+
+        {/* features */}
+        <div className="mt-16 flex flex-col sm:flex-row gap-4 ">
+          {features.map((item, index) => (
+            <Feature
+              title={item.title}
+              description={item.description}
+              key={index}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
