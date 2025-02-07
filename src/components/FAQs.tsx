@@ -28,15 +28,15 @@ const items = [
 ];
 
 export const FAQs = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
     <div className="bg-[linear-gradient(to_bottom,#5D2CA8_0%,#000_100%)] py-[72px] sm:py-24 text-white">
-      <div className="container ">
+      <div className="container">
         <h1 className="text-6xl font-bold text-center tracking-tighter">
           Frequently asked questions
         </h1>
@@ -50,7 +50,7 @@ export const FAQs = () => {
             >
               <div className="flex items-center justify-between">
                 <span className="font-semibold">{item.question}</span>
-                {openIndex === index ? <MinusIcon /> :<PlusIcon/>}
+                {openIndex === index ? <MinusIcon /> : <PlusIcon />}
               </div>
               <div
                 className={`${
